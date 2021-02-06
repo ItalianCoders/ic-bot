@@ -42,6 +42,7 @@ bot.on('ready', () => {
 
 bot.on('message', async (message) => {
 
+
     if (!message.content.startsWith(prefix) || message.author.bot) return
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -75,65 +76,6 @@ bot.giveawaysManager.on("giveawayEnded", (giveaway, winners) => {
 
 bot.login(token);
 
-// const youtubeApi = require("./apis/youtube/youtubeApi")
-
-
-// const getUpcomingLive = async () => {
-
-//     const searchParams = {
-//         part: "snippet",
-//         eventType: "upcoming",
-//         q: "ItalianCoders",
-//         type: "video"
-//     }
-
-//     const upcoming = await youtubeApi.search(searchParams)
-
-//     const upcomingIds = upcoming.items.map(item => item.id.videoId)
-
-
-//     const videosParams = {
-//         part: "liveStreamingDetails",
-//         id: upcomingIds.join()
-//     }
-
-//     let videos = await youtubeApi.listVideos(videosParams)
-
-//     videos = videos.items.filter(item => !item.liveStreamingDetails.actualEndTime)
-
-//     // upcomingLives = upcomingLives.map(item => item.liveStreamingDetails.unix = new Date(item.liveStreamingDetails.scheduledStartTime))
-
-//     let upcomingLives = [];
-
-//     for (item of videos) {
-//         upcomingLives.push({
-//             id: item.id,
-//             startTime: Date.parse(item.liveStreamingDetails.scheduledStartTime)
-//         })
-//     }
-
-//     upcomingLives = upcomingLives.sort((a, b) => (a.startTime > b.startTime) ? 1 : -1)
-
-//     console.log(upcomingLives)
-// }
-
-
-// getUpcomingLive()
-
-// const test = async () => {
-
-//     params = {
-//         part: "snippet, liveStreamingDetails",
-//         id: "lUrO1cakShw"
-//     }
-
-//     const testReq = await youtubeApi.listVideos(params)
-
-//     console.log(testReq)
-
-// }
-
-// test()
 
 
 

@@ -11,7 +11,17 @@ const execute = async (message, args, client) => {
         type: "video"
     }
 
-    const upcoming = await youtubeApi.search(searchParams)
+
+    try {
+        var upcoming = await youtubeApi.search(searchParams)
+    } catch (e) {
+        console.log(e)
+        return message.channel.send("Whoops, I can't get to the youtube api right now!");
+    }
+
+    if (!upcoming.items.length) {
+        return message.channel.send("Sembra che non ci siano live in programma!")
+    }
 
     const upcomingIds = upcoming.items.map(item => item.id.videoId)
 
@@ -40,16 +50,24 @@ const execute = async (message, args, client) => {
 
     upcomingLives = upcomingLives.sort((a, b) => (a.startTime > b.startTime) ? 1 : -1)
 
-    // console.log(upcomingLives)
-    // if(Number.isInteger(args[0])){
-    //     var liveIdx
-    // }
+
+    let numLive = upcomingLives.length
+
+    if (args[0]) {
+        const userArg = parseInt(args[0])
+        if (!isNaN(userArg)) {
+            numLive = userArg < 1 ? 1 : userArg // if argument is less than 1 make it 1
+            numLive = numLive > upcomingLives.length ? upcomingLives.length : numLive // if argument is more than found lives make it equal to found lives
+        } else {
+            return message.channel.send(`:x: You have to enter a valid number of upcoming lives! Currently from 1 to ${numLive}`);
+        }
+    }
 
     const fields = [];
 
     const now = Date.now()
 
-    for (live of upcomingLives) {
+    for (live of upcomingLives.slice(0, numLive)) {
         const startsIn = ms(live.startTime - now, { long: true })
         fields.push({
             name: live.title,
@@ -71,5 +89,6 @@ const execute = async (message, args, client) => {
 module.exports = {
     name: 'youtube-live',
     description: 'Lists the upcoming lives',
+    arguments: "numLives(optional)",
     execute
 };
