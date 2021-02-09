@@ -1,13 +1,15 @@
 const Discord = require('discord.js');
 const ms = require('ms');
 const youtubeApi = require("../apis/youtube/youtubeApi")
+const { italianCodersChannelId: channelId } = require("../settings.json")
 
 const execute = async (message, args, client) => {
 
     const searchParams = {
         part: "snippet",
+        channelId,
         eventType: "upcoming",
-        q: "ItalianCoders",
+        // q: "ItalianCoders",
         type: "video"
     }
 

@@ -2,9 +2,11 @@ require('dotenv').config();
 const fs = require("fs");
 const Discord = require('discord.js');
 
-const { prefix, giveawayCountdownFreq } = require("./settings.json");
+const { prefixProd, prefixDev, giveawayCountdownFreq } = require("./settings.json");
 
-const token = process.env.BOT_TOKEN;
+const prefix = process.env.NODE_ENV === "production" ? prefixProd : prefixDev
+
+const token = process.env.NODE_ENV === "production" ? process.env.BOT_TOKEN : process.env.BOT_TOKEN_DEV;
 
 const bot = new Discord.Client();
 
@@ -41,7 +43,6 @@ bot.on('ready', () => {
 
 
 bot.on('message', async (message) => {
-
 
     if (!message.content.startsWith(prefix) || message.author.bot) return
 
