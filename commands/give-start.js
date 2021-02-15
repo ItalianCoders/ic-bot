@@ -1,4 +1,5 @@
 const ms = require('ms');
+const { giveawayConfig } = require("../settings.json")
 const { isPermitted } = require('./utils/isPermitted');
 
 const execute = async (message, args, client) => {
@@ -36,7 +37,7 @@ const execute = async (message, args, client) => {
         return message.channel.send(':x: You have to specify a valid prize!');
     }
 
-
+    const reaction = giveawayConfig.default.reaction
     // Start the giveaway
     client.giveawaysManager.start(giveawayChannel, {
         // The giveaway duration
@@ -49,16 +50,16 @@ const execute = async (message, args, client) => {
         hostedBy: null,
         // Messages
         messages: {
-            giveaway: "@everyone\n\n🎉🎉 **GIVEAWAY** 🎉🎉",
-            giveawayEnded: "@everyone\n\n🎉🎉 **GIVEAWAY ENDED** 🎉🎉",
-            timeRemaining: "Time remaining: **{duration}**!",
-            inviteToParticipate: "React with 🎉 to participate!",
-            winMessage: "Congratulations, {winners}! You won **{prize}**!",
-            embedFooter: "Giveaways",
-            noWinner: "Giveaway cancelled, no valid participations.",
+            giveaway: `@everyone\n\n${reaction}  **ITALIANCODERS GIVEAWAY**  ${reaction}`,
+            giveawayEnded: `@everyone\n\n${reaction} **GIVEAWAY CONCLUSO** ${reaction}`,
+            timeRemaining: "Tempo rimanente: **{duration}**!",
+            inviteToParticipate: `Reagisci con ${reaction} per partecipare!`,
+            winMessage: "Congratulazioni {winners}! Hai vinto **{prize}**!",
+            embedFooter: "ItalianCoders",
+            noWinner: "Giveaway annullato, nessuno ha partecipato.",
             hostedBy: "Hosted by: {user}",
-            winners: "winner(s)",
-            endedAt: "Ended at",
+            winners: "Vincitore/i",
+            endedAt: "Finito il",
             units: {
                 seconds: "seconds",
                 minutes: "minutes",
@@ -69,7 +70,7 @@ const execute = async (message, args, client) => {
         }
     });
 
-    message.channel.send(`Giveaway started in ${giveawayChannel}!`);
+    message.channel.send(`Il Giveaway è iniziato in ${giveawayChannel}!`);
 
 
 }

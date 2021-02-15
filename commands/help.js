@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { prefixProd } = require("../settings.json");
+const { prefixProd, embedColor } = require("../settings.json");
 
 const execute = (message, args, client) => {
 
@@ -15,7 +15,7 @@ const execute = (message, args, client) => {
 
     const embed = new Discord.MessageEmbed()
         .setTitle('Help')
-        .setColor('#ACDDE7')
+        .setColor(embedColor)
         .setDescription(`**Prefix every command with ${prefixProd}**`)
         .addFields(
             {

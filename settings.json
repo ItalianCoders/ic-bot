@@ -1,7 +1,16 @@
 {
     "prefixProd": "!ic",
     "prefixDev": "!ic-dev",
-    "giveawayCountdownFreq": 10000,
     "italianCodersChannelId": "UCMAh8IjSY_iVR0gWA3I--ng",
-    "developerRole": "BotDev"
+    "developerRole": "BotDev",
+    "embedColor": "#ACDDE7",
+    "giveawayConfig": {
+        "storage": "./giveaways.json",
+        "updateCountdownEvery": 10000,
+        "default": {
+            "botsCanWin": false,
+            "embedColor": "#ACDDE7",
+            "reaction": "🎁"
+        }
+    }
 }
