@@ -2,7 +2,7 @@ require('dotenv').config();
 const fs = require("fs");
 const Discord = require('discord.js');
 
-const { prefixProd, prefixDev, giveawayCountdownFreq } = require("./settings.json");
+const { prefixProd, prefixDev, giveawayCountdownFreq, developerRole } = require("./settings.json");
 
 const prefix = process.env.NODE_ENV === "production" ? prefixProd : prefixDev
 
@@ -12,6 +12,7 @@ const bot = new Discord.Client();
 
 // Init discord giveaways https://github.com/Androz2091/giveaways-bot
 const { GiveawaysManager } = require('discord-giveaways');
+const { isPermitted } = require('./commands/utils/isPermitted');
 
 bot.giveawaysManager = new GiveawaysManager(bot, {
     storage: "./giveaways.json",

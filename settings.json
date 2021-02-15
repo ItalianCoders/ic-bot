@@ -2,5 +2,6 @@
     "prefixProd": "!ic",
     "prefixDev": "!ic-dev",
     "giveawayCountdownFreq": 10000,
-    "italianCodersChannelId": "UCMAh8IjSY_iVR0gWA3I--ng"
+    "italianCodersChannelId": "UCMAh8IjSY_iVR0gWA3I--ng",
+    "developerRole": "BotDev"
 }

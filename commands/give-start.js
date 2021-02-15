@@ -1,5 +1,5 @@
 const ms = require('ms');
-const isPermitted = require('./utils/isPermitted');
+const { isPermitted } = require('./utils/isPermitted');
 
 const execute = async (message, args, client) => {
 

@@ -1,5 +1,5 @@
 const ms = require('ms');
-const isPermitted = require('./utils/isPermitted');
+const { isPermitted } = require('./utils/isPermitted');
 const { findGiveaway } = require('./utils/give-helpers');
 
 const execute = async (message, args, client) => {
