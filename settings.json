@@ -6,7 +6,7 @@
     "embedColor": "#ACDDE7",
     "giveawayConfig": {
         "storage": "./giveaways.json",
-        "updateCountdownEvery": 10000,
+        "updateCountdownEvery": 30000,
         "default": {
             "botsCanWin": false,
             "embedColor": "#ACDDE7",
