@@ -9,6 +9,7 @@ const execute = async (message, args, client) => {
         part: "snippet",
         channelId,
         eventType: "upcoming",
+        maxResults: 50,
         // q: "ItalianCoders",
         type: "video"
     }
