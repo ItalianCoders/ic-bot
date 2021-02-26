@@ -87,6 +87,8 @@ const execute = async (message, args, client) => {
         .setImage(upcomingLives[0].thumbnail)
 
     message.channel.send(embed);
+
+    message.delete()
 }
 
 module.exports = {
